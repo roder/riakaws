@@ -39,12 +39,12 @@ Deployment
 
     $ cloud start -c path/to/clouds.rb
     
-**Scaling Out**å
+**Scaling Out**
 
     $ cloud expand -c path/to/clouds.rb
     $ cloud configure -c path/to/clouds.rb
     
-**Scaling down**
+**Scaling In**
     
     $ cloud contract -c path/to/clouds.rb
     
