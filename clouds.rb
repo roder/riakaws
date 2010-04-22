@@ -1,6 +1,6 @@
 pool "riakaws" do
   cloud "dev" do
-    instances 3
+    instances 2..9
     using :ec2
     
     image_id "ami-09e40a60" # Ubuntu 10.04 Beta Server  32-bit (Lucid Lynx)
@@ -10,6 +10,12 @@ pool "riakaws" do
       attributes :riakaws => {
         :aws_access_key => ENV['EC2_ACCESS_KEY'], 
         :aws_secret_key => ENV['EC2_SECRET_KEY']
+        }
+      attributes :riak => {
+        :url => "http://downloads.basho.com/riak/riak-0.9/riak_0.9.1-2_i386.deb" 
+        }
+      attributes :innostore => {
+        :url => "http://downloads.basho.com/innostore/innostore-8/innostore_8_i386.deb" 
         }
       repo File.dirname(__FILE__)+"/chef/"
       recipe "cloud"

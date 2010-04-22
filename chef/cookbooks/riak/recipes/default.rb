@@ -44,7 +44,7 @@ template "/etc/riak/vm.args" do
   source "vm.args.erb"
   owner "riak"
   group "riak"
-  mode "0744"
+  mode "0644"
 end
 
 remote_file "/etc/init.d/riak" do

@@ -6,7 +6,7 @@ Simple and rapid [Riak](http://riak.basho.com/) cloud deployment.
 
 The default configuration includes using [innostore](https://wiki.basho.com/display/RIAK/Setting+Up+Innostore) as the storage backend.
 
-Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small AWS instance.  It would be better to run with more memory and more cores. By default, riakaws spins up 3 nodes in the cloud.  The defaults can be changed in clouds.rb.
+Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small AWS instance.  It would be better to run with more memory and more cores, but if you're cheap like me, you're probably grateful that this is the default. Riakaws spins up 3 nodes in the cloud.  The defaults can be changed in clouds.rb.
 
 In *riakaws*, Riak is also configured to run with `heart`, which is not the default Riak configuration.
 
