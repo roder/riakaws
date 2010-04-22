@@ -14,7 +14,7 @@ nodes = []
 ec2.describe_instances.reservationSet.item.each do |node|
   node.instancesSet.item.each do |i|
     if i.instanceState.name =~ /running/
-      nodes << i.privateDnsName
+      nodes << i.privateDnsName unless i.privateDnsName == node[:fqdn]
     end
   end
 end
