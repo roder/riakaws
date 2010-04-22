@@ -6,16 +6,15 @@ Simple and rapid [Riak](http://riak.basho.com/) cloud deployment.
 
 The default configuration includes using [innostore](https://wiki.basho.com/display/RIAK/Setting+Up+Innostore) as the storage backend.
 
-Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small aws instance.  It would be better to run with more memory and more cores, but you can swap out the AMI in clouds.rb.
+Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small AWS instance.  It would be better to run with more memory and more cores. By default, riakaws spins up 3 nodes in the cloud.  The defaults can be changed in clouds.rb.
 
 In *riakaws*, Riak is also configured to run with `heart`, which is not the default Riak configuration.
 
 
 Prerequisites
-=======================
+----------------
 
-Gems
------
+**Gems**
 
 * [amazon-ec2](http://github.com/grempe/amazon-ec2)
 * [poolparty](http://poolpartyrb.com)
@@ -25,8 +24,8 @@ To install:
     $ gem install amazon-ec2
     $ gem install poolparty
 
-Environment Variables
-------------------------
+**Environment Variables**
+
 
 This should be placed in ~/.bashrc or ~/.profile
 
@@ -34,24 +33,20 @@ This should be placed in ~/.bashrc or ~/.profile
     export EC2_SECRET_KEY='aws_secret_key'
 
 Deployment
-============
-
-Initial Deployment
 --------------------
 
-    $ cloud start
-    
-That's it.
+**Initial Deployment**
 
-Scaling Out
-------------
+    $ cloud start -c path/to/clouds.rb
+    
+**Scaling Out**å
 
-    $ cloud expand &&  cloud configure
+    $ cloud expand -c path/to/clouds.rb
+    $ cloud configure -c path/to/clouds.rb
     
-Scaling down
--------------
+**Scaling down**
     
-    $ cloud contract
+    $ cloud contract -c path/to/clouds.rb
     
 License
 -------
