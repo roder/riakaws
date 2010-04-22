@@ -1,6 +1,6 @@
 pool "riakaws" do
   cloud "dev" do
-    instances 2..9
+    instances 3..9
     using :ec2
     
     image_id "ami-09e40a60" # Ubuntu 10.04 Beta Server  32-bit (Lucid Lynx)
