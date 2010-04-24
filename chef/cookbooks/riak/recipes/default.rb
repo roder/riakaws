@@ -57,12 +57,14 @@ end
 execute "join" do
   action :nothing
   name = node[:riakaws][:cloud].first
-  if name is nil
-    command "echo Lonely Cloud: No nodes to join."
+  if name.nil?
+    Chef::Log.info("Riak Join: No nodes found.")
+    command "echo Helro Whirrl"
   else
     # FIXME: exit 0 is used to avoid situations where the other node has not 
     # started and we don't want chef to exit
     # TODO: check for active riak node before calling the command.
+    Chef::Log.info("Riak Join: will attempt to join riak@" + node[:fqdn] + " to riak@" + name)
     command "sleep 5 && /usr/sbin/riak-admin join riak@#{name} || exit 0"
   end
 end

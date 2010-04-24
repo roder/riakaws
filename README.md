@@ -44,6 +44,19 @@ Deployment
 **Scaling In**
     
     $ cloud contract -c path/to/clouds.rb
+
+Known Issues
+------------
+
+Often with the Ubuntu image, there is an issue where poolparty will try to login to the AMI before ssh is ready.  You'll see that your cloud deployment fails with an error like this:
+
+    Copying the chef-repo into the base directory from ./chef/
+    Creating the dna.json
+    Connection closed by 72.44.56.95
+    rsync: connection unexpectedly closed (0 bytes received so far) [sender]
+    rsync error: unexplained error (code 255) at /SourceCache/rsync/rsync-40/rsync/io.c(452) [sender=2.6.9]
+    
+The only resolution, I have found is to terminate the cloud and continue re-deploy.
     
 License
 -------

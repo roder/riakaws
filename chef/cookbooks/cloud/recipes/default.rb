@@ -11,10 +11,12 @@ ec2 = AWS::EC2::Base.new(:access_key_id => node[:riakaws][:aws_access_key], :sec
 
 # In set[:riak][:cloud] list, create a list of running nodes
 nodes = []
-ec2.describe_instances.reservationSet.item.each do |node|
-  node.instancesSet.item.each do |i|
+ec2.describe_instances.reservationSet.item.each do |n|
+  n.instancesSet.item.each do |i|  
     if i.instanceState.name =~ /running/
-      nodes << i.privateDnsName unless i.privateDnsName == node[:fqdn]
+      if i.privateDnsName != node[:fqdn]
+        nodes << i.privateDnsName
+      end
     end
   end
 end
