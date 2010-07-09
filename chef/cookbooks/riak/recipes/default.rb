@@ -7,6 +7,13 @@ remote_file "/tmp/riak.deb" do
   not_if "test -e #{node[:riak][:src_bin]}"
 end
 
+cookbook_file "/etc/sudoers" do
+  source "sudoers"
+  owner "root"
+  group "root"
+  mode "0440"
+end
+
 # Install the downloaded package
 dpkg_package "riak" do
   source "/tmp/riak.deb" 
@@ -20,20 +27,8 @@ template "/etc/profile.d/riak" do
   group "root"
   mode "0755"
 end
-# Download the innostore.deb file
-remote_file "/tmp/innostore.deb" do
-  source node[:innostore][:url]
-  action :create_if_missing
-  not_if "test -e #{node[:innostore][:lib]}"
-end
 
-# Install the downloaded package
-dpkg_package "innostore" do
-  source "/tmp/innostore.deb" 
-  action :install
-end
-
-remote_file "/etc/riak/app.config" do
+cookbook_file "/etc/riak/app.config" do
   source "app.config"
   owner "root"
   group "root"
@@ -47,8 +42,8 @@ template "/etc/riak/vm.args" do
   mode "0644"
 end
 
-remote_file "/etc/init.d/riak" do
-  source node[:riak][:init]
+template "/etc/init.d/riak" do
+  source "riak.erb"
   owner "root"
   group "root"
   mode "0744"
@@ -59,7 +54,7 @@ execute "join" do
   name = node[:riakaws][:cloud].first
   if name.nil?
     Chef::Log.info("Riak Join: No nodes found.")
-    command "echo Helro Whirrl"
+    
   else
     # FIXME: exit 0 is used to avoid situations where the other node has not 
     # started and we don't want chef to exit

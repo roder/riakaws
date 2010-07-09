@@ -1,1 +1,2 @@
-export PATH=$PATH:<%= @node[:riak][:erts] %>
+export ERTS_PATH=<%= @node[:riak][:erts] %>
+export PATH=<%= @node[:riak][:erts] %>:$PATH
