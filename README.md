@@ -6,7 +6,7 @@ Simple and rapid [Riak](http://riak.basho.com/) cloud deployment.
 
 The default configuration uses the furiously fast key-value store [bitcask](http://blog.basho.com/2010/04/27/hello,-bitcask/) as the storage backend. Modifications to the default riak configuration can be made in [./chef/cookbooks/riak/files/default/app.config](http://github.com/roder/riakaws/blob/master/chef/cookbooks/riak/files/default/app.config).
 
-Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small AWS instance.  It would be better to run with more memory and more cores, but if you're broke, you're probably grateful that this is the default. Riakaws spins up 3 nodes in the cloud.  The defaults can be changed in clouds.rb.
+Currently the Amazon Machine Image is set to 32-bit ubuntu server. This is a single core, small AWS instance.  It would be better to run with more memory and more cores, but if you're broke, you're probably grateful that this is the default. Riakaws spins up 1 nodes in the cloud.  The defaults can be changed in clouds.rb.
 
 Prerequisites
 ----------------
