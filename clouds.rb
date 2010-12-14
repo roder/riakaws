@@ -3,7 +3,7 @@ pool "riakaws" do
     instances 1..9
     using :ec2
     
-    image_id "ami-2d4aa444" # Ubuntu 10.04 LTS (Lucid Lynx) Server 32-bit 
+    image_id "ami-a403f7cd" # Ubuntu 10.04 LTS (Lucid Lynx) Server 32-bit 
         
     chef :solo do
       attributes :riakaws => {
